@@ -9,7 +9,7 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/codefresh-contrib/gitops-cert-level-2-examples.git
+    repoURL: https://github.com/kkanedaa/gitops-cert-level-2-examples.git
     targetRevision: HEAD
     path: ./custom-diff/01-with-hpa
    
@@ -20,5 +20,10 @@ spec:
   # Sync policy
   syncPolicy:
     syncOptions:
-      - CreateNamespace=true  
+      - CreateNamespace=true
+  ignoreDifferences:
+  - group: apps
+    kind: Deployment
+    jsonPointers:
+    - /spec/replicas
    
